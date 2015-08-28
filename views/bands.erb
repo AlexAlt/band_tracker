@@ -1,8 +1,9 @@
 <h2> <%= @band.name() %> </h2>
 <h4> <%= @band.city() %>, <%= @band.state() %> </h4>
 
+
+<h2>Where they've played:</h2> 
 <% if @band.venues().any?() %>
-  <h2>Where they've played:</h2> 
   <ul class="list-unstyled">
     <% @band.venues().each() do |venue| %>
       <li><%= venue.name() %> <i>(<%= venue.city() %>)</i></li>
@@ -10,7 +11,7 @@
   </ul>
 
 <% else %>
-  <p>None yet.</p>
+  <p>No shows yet.</p>
 <% end %>
 
 <ul class="list-inline">
