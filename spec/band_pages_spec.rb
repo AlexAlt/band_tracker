@@ -10,6 +10,8 @@ describe('the band pages path', {:type => :feature}) do
   it('allows user to add a new band', {:type => :feature}) do
     visit('/')
     fill_in("name", :with => "Blind Lovejoy")
+    fill_in("city", :with => "Portland")
+    fill_in("state", :with => "OR")
     click_button("Add Band")
     expect(page).to have_content("Blind Lovejoy")
   end
@@ -28,19 +30,27 @@ describe('the band pages path', {:type => :feature}) do
     expect(page).to have_content("Edit")
   end
 
-  # it('allows user to edit name') do
-  #   new_band = Band.create({:name => "Blind Lovejoy", :hometown => "Portland"})
-  #   visit("/bands/#{new_band.id}/edit")
-  #   fill_in("name", :with => "Deaf Lovejoy")
-  #   click_button("Edit Name")
-  #   expect(page).to have_content("Deaf Lovejoy")
-  # end
+  it('allows user to edit name') do
+    new_band = Band.create({:name => "Blind Lovejoy", :city => "Portland", :state => "OR"})
+    visit("/bands/#{new_band.id}/edit")
+    fill_in("name", :with => "Deaf Lovejoy")
+    click_button("Edit Name")
+    expect(page).to have_content("Deaf Lovejoy")
+  end
 
-  #  it('allows user to edit hometown') do
-  #   new_band = Band.create({:name => "Blind Lovejoy", :hometown => "Portland"})
-  #   visit("/bands/#{new_band.id}/edit")
-  #   fill_in("hometown", :with => "Portland, OR")
-  #   click_button("Change Hometown")
-  #   expect(page).to have_content("Portland, OR")
-  # end
+   it('allows user to edit city') do
+    new_band = Band.create({:name => "Blind Lovejoy", :city => "Portland", :state => "OR"})
+    visit("/bands/#{new_band.id}/edit")
+    fill_in("city", :with => "Bend")
+    click_button("Change City")
+    expect(page).to have_content("Bend,")
+  end
+
+   it('allows user to edit state') do
+    new_band = Band.create({:name => "Blind Lovejoy", :city => "Portland", :state => "OR"})
+    visit("/bands/#{new_band.id}/edit")
+    fill_in("state", :with => "ME")
+    click_button("Change State")
+    expect(page).to have_content("ME")
+  end
 end

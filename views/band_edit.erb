@@ -12,13 +12,23 @@
 
 
 
-<form action = "/bands/<%= @band.id() %>/hometown" method="post">         
+<form action = "/bands/<%= @band.id() %>/city" method="post">         
   <input type="hidden" name="_method" value="patch">
 
-  <label for="hometown" class="form-label"></label>
-  <input id="hometown" name="hometown" type="text" placeholder="Change Hometown">
+  <label for="city" class="form-label"></label>
+  <input id="city" name="city" type="text" placeholder="Change City">
 
-  <button type="submit" class="btn-default">Change Hometown</button>     
+  <button type="submit" class="btn-default">Change City</button>     
+</form>
+
+
+<form action = "/bands/<%= @band.id() %>/state" method="post">         
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="state" class="form-label"></label>
+  <input id="state" name="state" type="text" placeholder="Change State">
+
+  <button type="submit" class="btn-default">Change State</button>     
 </form>
 
 

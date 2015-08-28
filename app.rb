@@ -10,10 +10,14 @@ end
 
 post('/bands') do
   name = params.fetch("name")
-  hometown = params.fetch("hometown")
-  band = Band.create({:name => name, :hometown => hometown})
-  @bands = Band.all()
-  redirect("/")
+  city = params.fetch("city") 
+  state = params.fetch("state")
+  band = Band.new({:name => name, :city => city, :state => state})
+  if band.save()
+   redirect("/")
+  else
+   erb(:errors)
+ end
 end
 
 get('/bands/:id') do
@@ -34,9 +38,22 @@ patch('/bands/:id/name') do
   redirect("/bands/#{@band.id}")
 end
 
-patch('/bands/:id/hometown') do
+patch('/bands/:id/city') do
   @band = Band.find(params.fetch('id'))
-  hometown = params.fetch("hometown")
-  @band.update({:hometown => hometown})
+  city = params.fetch("city") 
+  @band.update({:city => city})
   redirect("/bands/#{@band.id}")
+end
+
+patch('/bands/:id/state') do
+  @band = Band.find(params.fetch('id'))
+  state = params.fetch("state")
+  @band.update({:state => state})
+  redirect("/bands/#{@band.id}")
+end
+
+delete('/bands/:id') do
+  @band = Band.find(params.fetch('id'))
+  @band.destroy()
+  redirect("/")
 end
