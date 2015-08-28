@@ -69,7 +69,10 @@ patch('/bands/:id/venues') do
   @band = Band.find(params.fetch('id'))
   venue_id = params.fetch("venue_id")
   venue = Venue.find(venue_id)
-  @band.venues.push(venue)
+  venue_name = venue.name()
+  unless @band.venues().find_by({:name => venue_name})
+    @band.venues().push(venue)
+  end
   redirect("/bands/#{@band.id}")
 end
 
