@@ -2,15 +2,18 @@
 <h4> <%= @band.city() %>, <%= @band.state() %> </h4>
 
 <% if @band.venues().any?() %>
-  <h2>Where they've played:</h2> <% @band.venues().each() do |venue| %>
-      <p><%= venue.name() %></p>
-
-      <% end %>
+  <h2>Where they've played:</h2> 
+  <ul class="list-unstyled">
+    <% @band.venues().each() do |venue| %>
+      <li><%= venue.name() %> <i>(<%= venue.city() %>)</i></li>
+    <% end %>
+  </ul>
 
 <% else %>
   <p>None yet.</p>
 <% end %>
 
-<p><a href="/bands/<%= @band.id() %>/edit">Edit Band</a></p>
-
-<p><a href="/">Home</a></p>
+<ul class="list-inline">
+  <li><a href="/">Home</a></li>
+  <li><a href="/bands/<%= @band.id() %>/edit">Edit Band</a></li>
+</ul>
