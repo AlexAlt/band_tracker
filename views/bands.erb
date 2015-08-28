@@ -2,7 +2,7 @@
 <h4> <%= @band.city() %>, <%= @band.state() %> </h4>
 
 <% if @band.venues().any?() %>
-  <h4>Where they've played:</h4> <% @band.venues().each() do |venue| %>
+  <h2>Where they've played:</h2> <% @band.venues().each() do |venue| %>
       <p><%= venue.name() %></p>
 
       <% end %>

@@ -10,7 +10,7 @@
   <button type="submit" class="btn-default">Edit Name</button>     
 </form>
 
-
+<br>
 
 <form action = "/bands/<%= @band.id() %>/city" method="post">         
   <input type="hidden" name="_method" value="patch">
@@ -21,6 +21,7 @@
   <button type="submit" class="btn-default">Change City</button>     
 </form>
 
+<br>
 
 <form action = "/bands/<%= @band.id() %>/state" method="post">         
   <input type="hidden" name="_method" value="patch">
@@ -30,6 +31,8 @@
 
   <button type="submit" class="btn-default">Change State</button>     
 </form>
+
+<br>
 
 <form action="/bands/<%=@band.id() %>/venues" method="post">
   <input type="hidden" name="_method" value="patch">
