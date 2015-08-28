@@ -53,4 +53,16 @@ describe('the band pages path', {:type => :feature}) do
     click_button("Change State")
     expect(page).to have_content("ME")
   end
+
+  it('allows user to add a venue to a band') do
+    new_band = Band.create({:name => "Blind Lovejoy", :city => "Portland", :state => "OR"})
+    new_venue = Venue.create({:name => "Doug Fir Lounge", :city => "Portland"})
+    visit("/bands/#{new_band.id}/edit")
+    select("Doug Fir Lounge")
+    click_button("Add Venue")
+    expect(page).to have_content("Doug Fir Lounge")
+  end
 end
+
+
+

@@ -1,6 +1,16 @@
 <h2> <%= @band.name() %> </h2>
 <h4> <%= @band.city() %>, <%= @band.state() %> </h4>
 
+<% if @band.venues().any?() %>
+  <h4>Where they've played:</h4> <% @band.venues().each() do |venue| %>
+      <p><%= venue.name() %></p>
+
+      <% end %>
+
+<% else %>
+  <p>None yet.</p>
+<% end %>
+
 <p><a href="/bands/<%= @band.id() %>/edit">Edit Band</a></p>
 
 <p><a href="/">Home</a></p>

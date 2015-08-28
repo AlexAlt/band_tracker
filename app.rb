@@ -40,6 +40,7 @@ end
 
 get('/bands/:id/edit') do
  @band = Band.find(params.fetch('id'))
+ @venues = Venue.all()
  erb(:band_edit)
 end
 
@@ -64,12 +65,17 @@ patch('/bands/:id/state') do
   redirect("/bands/#{@band.id}")
 end
 
+patch('/bands/:id/venues') do
+  @band = Band.find(params.fetch('id'))
+  venue_id = params.fetch("venue_id")
+  venue = Venue.find(venue_id)
+  @band.venues.push(venue)
+  redirect("/bands/#{@band.id}")
+end
+
 delete('/bands/:id') do
   @band = Band.find(params.fetch('id'))
   @band.destroy()
   redirect("/")
 end
-
-#==============================================================#
-
 

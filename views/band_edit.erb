@@ -31,6 +31,18 @@
   <button type="submit" class="btn-default">Change State</button>     
 </form>
 
+<form action="/bands/<%=@band.id() %>/venues" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <% if @venues.any?() %>
+    <select id="venue_id" name='venue_id' type='text'>
+      <% @venues.each() do |venue| %>
+      <option value="<%= venue.id %>"> <%= venue.name %> </option>
+      <% end %>
+    </select>
+    <button type="submit" class="btn-default">Add Venue</button>
+  <% end %>
+</form>
+  
 
 
 <form action="/bands/<%=@band.id() %>" method="post">
