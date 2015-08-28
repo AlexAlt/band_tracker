@@ -18,7 +18,7 @@ class Band < ActiveRecord::Base
   end
 
   define_method(:capitalize_city) do
-    self.city = city.capitalize()
+    self.city = self.city.capitalize()
   end
 
   define_method(:capitalize_state) do

@@ -15,7 +15,7 @@ private
     self.name = capitalize_name.join(" ")
   end
 
-  define_method(:capitalize_city) do
-    self.city = (city().capitalize!())
+ define_method(:capitalize_city) do
+    self.city = self.city.capitalize()
   end
 end

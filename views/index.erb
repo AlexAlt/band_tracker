@@ -11,10 +11,31 @@
 
 <p>Add a new band</p>
 <form action="/bands" method="post">
-  <input id="name" name="name" type="text" placeholder="Band Name">
-  <input id="city" name="city" type="text" placeholder="City">
+  <input id="band_name" name="band_name" type="text" placeholder="Band Name">
+  <input id="band_city" name="band_city" type="text" placeholder="City">
   <input id="state" name="state" type="text" placeholder="State">
-
 
   <button type="submit" class="btn-primary">Add Band</button>
 </form>
+
+
+
+<p>Add a venue</p>
+<form action="/venues" method="post">
+  <input id="venue_name" name="venue_name" type="text" placeholder="Venue Name">
+  <input id="venue_city" name="venue_city" type="text" placeholder="City">
+
+  <button type="submit" class="btn-primary">Add Venue</button>
+</form>
+
+
+<h5>Current venues on record:</h5>
+<% if @venues.any?() %>
+  <ul>
+    <% @venues.each() do |venue| %>
+     <li> <%= venue.name() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No venues yet</p>
+<% end %>

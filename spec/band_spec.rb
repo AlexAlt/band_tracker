@@ -18,22 +18,22 @@ describe(Band) do
     expect(test_band.save()).to(eq(false))
   end
 
-  it('capitalizes the band name')  do
+  it('capitalizes the band name if multi word')  do
     test_band = Band.create({:name => "blind lovejoy", :city => "Portland", :state => "OR"})
     expect(test_band.name()).to(eq("Blind Lovejoy"))
   end
 
-  it('capitalizes the band name')  do
+  it('capitalizes the band name if one word')  do
     test_band = Band.create({:name => "creed", :city => "Portland", :state => "OR"})
     expect(test_band.name()).to(eq("Creed"))
   end
 
-  it('capitalizes the band name')  do
+  it('capitalizes the band name properly if already capitalized')  do
     test_band = Band.create({:name => "Creed", :city => "Portland", :state => "OR"})
     expect(test_band.name()).to(eq("Creed"))
   end
 
-  it('capitalizes the band name')  do
+  it('capitalizes the band name if capitalization in different places')  do
     test_band = Band.create({:name => "no Use for A Name", :city => "Portland", :state => "OR"})
     expect(test_band.name()).to(eq("No Use For A Name"))
   end
@@ -43,7 +43,7 @@ describe(Band) do
     expect(test_band.city()).to(eq("Portland"))
   end
 
-  it('capitalizes the band city')  do
+  it('capitalizes the band city if already capitalized')  do
     test_band = Band.create({:name => "blind lovejoy", :city => "Portland", :state => "OR"})
     expect(test_band.city()).to(eq("Portland"))
   end

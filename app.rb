@@ -5,15 +5,27 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
   @bands = Band.all()
+  @venues = Venue.all()
   erb(:index)
 end
 
 post('/bands') do
-  name = params.fetch("name")
-  city = params.fetch("city") 
+  name = params.fetch("band_name")
+  city = params.fetch("band_city") 
   state = params.fetch("state")
   band = Band.new({:name => name, :city => city, :state => state})
   if band.save()
+   redirect("/")
+  else
+   erb(:errors)
+ end
+end
+
+post('/venues') do
+  name = params.fetch("venue_name")
+  city = params.fetch("venue_city") 
+  venue = Venue.new({:name => name, :city => city})
+  if venue.save()
    redirect("/")
   else
    erb(:errors)
@@ -57,3 +69,7 @@ delete('/bands/:id') do
   @band.destroy()
   redirect("/")
 end
+
+#==============================================================#
+
+
